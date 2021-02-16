@@ -5,16 +5,13 @@
 
 public class CubeRunner
 {
-	public static void main( String[] args )
+	public static String main( String[] args )
    {
-		System.out.println( "Cube area is :: " + Cube.area( 1 ) );
-		System.out.println( "Cube area is :: " + Cube.area( 2 ) );
-		System.out.println( "Cube area is :: " + Cube.area( 3 ) );
-		System.out.println( "Cube area is :: " + Cube.area( 4 ) );
-		System.out.println( "Cube area is :: " + Cube.area( 5 ) );		
-		System.out.println( "Cube area is :: " + Cube.area( 6 ) );
-		System.out.println( "Cube area is :: " + Cube.area( 7 ) );
+		String a = "hello"; 
 
+		String b = "there";
+
+		return a.substring(1,a.length()) + b.substring(1,b.length());
 	}
 }
 
