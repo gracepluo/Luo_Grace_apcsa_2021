@@ -25,7 +25,7 @@ public class RaySumLast
       	System.out.println("last int = " + lastval);
 		for(int i = 1; i < ray.length; i++){
         
-    	  if ( ray[i] > lastval){
+    	  if ( ray[i] >= lastval){
     		  sum += ray[i];
     		  System.out.println("added =" + ray[i]);
     	  }
