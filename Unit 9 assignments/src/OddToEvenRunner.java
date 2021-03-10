@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
@@ -5,32 +8,16 @@
 
 public class OddToEvenRunner
 {
-	
-    private int sum;
-    
-	public OddToEvenRunner(){
-		sum = 0;
-    }
-
-      public OddToEvenRunner(int arr[]){
-          sum=0; 
-      }
-      
-
-
 	public static void main( String args[] )
-	{
-      	int lastval = args.length-1;
-      	System.out.println("last int = " + lastval);
-		for(int i = 1; i < args.length; i++){
-        
-    	  if ( args[i] >= lastval){
-    		  sum += args[i];
-    		  System.out.println("added =" + args[i]);
-    	  }
-      
-         }
-         return sum;
+	{	
+	List<Integer> vals;
+	vals = new ArrayList<Integer>();
+	vals.add(2);
+	vals.add(4);
+	vals.add(6);
+	vals.add(8);
+	vals.add(8);
+  
+	System.out.println(ListDown.go(vals));
 	}
-	
 }

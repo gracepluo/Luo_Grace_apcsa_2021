@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ListOddToEven
 {
-	public static boolean go( List<Integer> ray )
+	public static int go( List<Integer> ray )
 	{
 		int firstOddNumber = -1;
 		for(int i = 0; i < ray.size(); i++){
