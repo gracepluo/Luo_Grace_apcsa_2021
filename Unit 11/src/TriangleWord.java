@@ -16,7 +16,6 @@ public class TriangleWord
 				System.out.print(word.substring(0, a));
 			}
 			System.out.println();
-			//System.out.println(word.substring(0, a));
 			a++;
 
 		}

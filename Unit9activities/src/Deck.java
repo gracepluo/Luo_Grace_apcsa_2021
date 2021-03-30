@@ -31,7 +31,8 @@ public class Deck {
     public Deck(String[] ranks, String[] suits, int[] values) {
         this.cards = new ArrayList<Card>();
         for (int i = 0; i < ranks.length; i++) {
-            Card aCard = new Card(ranks[i], suits[i], values[i]);
+          
+            Card aCard = new Card(ranks[i], suits[i/4], values[i]);
             this.cards.add(aCard);
         }
         this.size = this.cards.size();
@@ -90,7 +91,7 @@ public class Deck {
      */
     @Override
     public String toString() {
-        String rtn = "size = " + size + "\nUndealt cards: \n";
+        String rtn = "size = " + size + "Undealt cards: ";
 
         for (int k = size - 1; k >= 0; k--) {
             rtn = rtn + cards.get(k);
@@ -99,11 +100,11 @@ public class Deck {
             }
             if ((size - k) % 2 == 0) {
                 // Insert carriage returns so entire deck is visible on console.
-                rtn = rtn + "\n";
+                rtn = rtn + " ";
             }
         }
 
-        rtn = rtn + "\nDealt cards: \n";
+        rtn = rtn + "Dealt cards: ";
         for (int k = cards.size() - 1; k >= size; k--) {
             rtn = rtn + cards.get(k);
             if (k != size) {
@@ -111,11 +112,11 @@ public class Deck {
             }
             if ((k - cards.size()) % 2 == 0) {
                 // Insert carriage returns so entire deck is visible on console.
-                rtn = rtn + "\n";
+                rtn = rtn + " ";
             }
         }
 
-        rtn = rtn + "\n";
+        rtn = rtn + " ";
         return rtn;
     }
 }
