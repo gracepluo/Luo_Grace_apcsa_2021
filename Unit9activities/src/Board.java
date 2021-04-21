@@ -80,7 +80,10 @@ public abstract class Board {
 	 * @param k the index of the card to be dealt.
 	 */
 	public void deal(int k) {
-		cards[k] = deck.deal();
+        Card c = deck.deal();
+        if (c != null) {
+			cards[k] = c;
+        }
 	}
 
 	/**

@@ -79,7 +79,7 @@ public class Deck {
      */
     public Card deal() {
         this.size = this.size - 1;
-        if (this.size > 0) {
+        if (this.size >= 0) {
             return this.cards.get(this.size);
         }
         return null;

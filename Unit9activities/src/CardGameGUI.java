@@ -109,7 +109,11 @@ public class CardGameGUI extends JFrame implements ActionListener {
 		}
 
 		selections = new boolean[board.size()];
+        for (int i = 0; i < selections.length; i++) {
+            selections[i] = true;
+        }
 		initDisplay();
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		repaint();
 	}
@@ -129,10 +133,11 @@ public class CardGameGUI extends JFrame implements ActionListener {
 	 * Draw the display (cards and messages).
 	 */
 	public void repaint() {
+
 		for (int k = 0; k < board.size(); k++) {
 			String cardImageFileName =
-				imageFileName(board.cardAt(k), selections[k]);
-			
+					imageFileName(board.cardAt(k), selections[k]);
+		
 			ImageIcon icon = new ImageIcon(cardImageFileName);
 				
 			displayCards[k].setIcon(icon);
@@ -141,8 +146,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
 		statusMsg.setText(board.deckSize()
 			+ " undealt cards remain.");
 		statusMsg.setVisible(true);
-		totalsMsg.setText("You've won " + totalWins
-			 + " out of " + totalGames + " games.");
+		totalsMsg.setText("You've won " + totalWins + " out of " + totalGames + " games.");
 		totalsMsg.setVisible(true);
 		pack();
 		panel.repaint();
@@ -152,11 +156,12 @@ public class CardGameGUI extends JFrame implements ActionListener {
 	 * Initialize the display.
 	 */
 	private void initDisplay()	{
-		panel = new JPanel() {
-			public void paintComponent(Graphics g) {
-				super.paintComponent(g);
-			}
-		};
+		panel = new JPanel();
+		//{
+//			public void paintComponent(Graphics g) {
+//				super.paintComponent(g);
+//			}
+//		};
 
 		// If board object's class name follows the standard format
 		// of ...Board or ...board, use the prefix for the JFrame title
@@ -181,9 +186,15 @@ public class CardGameGUI extends JFrame implements ActionListener {
 		panel.setLayout(null);
 		panel.setPreferredSize(
 			new Dimension(DEFAULT_WIDTH - 20, height - 20));
+      
 		displayCards = new JLabel[board.size()];
 		for (int k = 0; k < board.size(); k++) {
 			displayCards[k] = new JLabel();
+            // add code to put image in label
+           // Import ImageIcon     
+//			ImageIcon iconLogo = new ImageIcon("activity9.cards/10diamonds.GIF");
+			// In init() method write this code
+//			displayCards[k].setIcon(iconLogo);
 			panel.add(displayCards[k]);
 			displayCards[k].setBounds(cardCoords[k].x, cardCoords[k].y,
 										CARD_WIDTH, CARD_HEIGHT);
@@ -258,16 +269,24 @@ public class CardGameGUI extends JFrame implements ActionListener {
 	 * @param isSelected flag that indicates if the card is selected
 	 * @return String representation of the image
 	 */
-	private String imageFileName(Card c, boolean isSelected) {
+	
+
+
+
+
+private String imageFileName(Card c, boolean isSelected) {
 		String str = "cards/";
 		if (c == null) {
+			System.out.println("card is null" );
 			return "cards/back1.GIF";
 		}
 		str += c.rank() + c.suit();
 		if (isSelected) {
+			System.out.println("card is " + str);
 			str += "S";
 		}
 		str += ".GIF";
+		System.out.println("c is " + str);
 		return str;
 	}
 
@@ -358,7 +377,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
 					return;
 				}
 			}
-			signalError();
+			//signalError();
 		}
 
 		/**

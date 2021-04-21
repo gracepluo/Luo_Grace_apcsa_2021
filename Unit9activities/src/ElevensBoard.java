@@ -112,7 +112,9 @@ public class ElevensBoard extends Board {
 		boolean hasK = false;
 		
 		for (int i : selectedCards) {
+			
 			Card c = cardAt(i);
+            System.out.println("Card: " + c.rank());
 			
 			if (c.rank() == "jack") hasJ = true;
 			if (c.rank() == "queen") hasQ = true;
