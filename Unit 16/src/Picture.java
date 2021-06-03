@@ -301,7 +301,7 @@ public class Picture extends SimplePicture {
 		for (int row = 230; row < 330; row++) {
 			for (int col = 230; col < 350; col++) {				
 				originalPixel = pixels[row][col];
-				newPixel = pixels[row + 15][col + 120];
+				newPixel = pixels[row + 10][col + 100];
 				
 				newPixel.setColor(originalPixel.getColor());
 			}
@@ -394,6 +394,65 @@ public class Picture extends SimplePicture {
 		this.write("collage.jpg");
 	}
 
+	
+	/**
+	 * Method to Blur image
+	 * 
+	 * @param edgeDist
+	 *            LAB ASSESSMENT part
+	 */
+	
+	public void blur(int x, int y, int w, int h) {
+		Pixel[][] pixels = this.getPixels2D();
+		
+		for (int row = y; row < y + h; row++) {
+			for (int col = x; col < x + w; col++) {
+				Pixel thisPix = pixels[row][col];
+				
+				int R = thisPix.getRed();
+				int G = thisPix.getGreen();
+				int B = thisPix.getBlue();
+				
+				if (row > 0 && row < pixels.length && col > 0 && col < pixels[0].length) {
+					Pixel left = pixels[row][col - 1];
+					Pixel above = pixels[row - 1][col];
+					Pixel right = pixels[row][col + 1];
+					Pixel below = pixels[row + 1][col];
+					
+					int leftR = left.getRed();
+					int leftG = left.getGreen();
+					int leftB = left.getBlue();
+					
+					int aboveR = above.getRed();
+					int aboveG = above.getGreen();
+					int aboveB = above.getBlue();
+					
+					int rightR = right.getRed();
+					int rightG = right.getGreen();
+					int rightB = right.getBlue();
+					
+					int belowR = below.getRed();
+					int belowG = below.getGreen();
+					int belowB = below.getBlue();
+					
+					int newRed = R + (R - leftR) / 2 + (R - aboveR) / 2 + (R - rightR) / 2 + (R - belowR) / 2;
+					newRed = clamp(newRed, 0, 255);
+					
+					int newGreen = B + (G - leftG) / 2 + (G - aboveG) / 2 + (G - rightG) / 2 + (G - belowG) / 2;
+					newGreen = clamp(newGreen, 0, 255);
+					
+					int newBlue = B + (B - leftB) / 2 + (B - aboveB) / 2 + (B - rightB) / 2 + (B - belowB) / 2;
+					newBlue = clamp(newBlue, 0, 255);
+					
+					thisPix.setRed(newRed);
+					thisPix.setGreen(newGreen);
+					thisPix.setBlue(newBlue);
+				}
+			}
+		}
+	}
+	
+	
 	/**
 	 * Method to show large changes in color
 	 * 
